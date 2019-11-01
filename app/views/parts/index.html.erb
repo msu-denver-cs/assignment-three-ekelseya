@@ -18,9 +18,11 @@
         <td><%= part.name %></td>
         <td><%= part.quantity %></td>
         <td><%= part.factory.name %></td>
-        <td><%= link_to 'Show', part, :class => "button btn btn-info"  %></td>
-        <td><%= link_to 'Edit', edit_part_path(part), :class => "button btn btn-warning"   %></td>
-        <td><%= link_to 'Destroy', part, :class => "button btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', part, :class => "button btn btn-warning"  %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_part_path(part), :class => "button btn btn-warning"   %></td>
+          <td><%= link_to 'Destroy', part, :class => "button btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,5 +30,7 @@
 
 <br>
 
-<%= link_to 'New Part', new_part_path, :class => "button btn btn-info"  %>
-<%= link_to 'Home', root_path, :class => "button btn btn-info"  %>
+<% if user_signed_in? %>
+  <%= link_to 'New Part', new_part_path, :class => "button btn btn-warning"  %>
+  <% end %>
+<%= link_to 'Home', root_path, :class => "button btn btn-warning"  %>

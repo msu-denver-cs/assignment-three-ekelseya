@@ -9,6 +9,8 @@
   <%= @factory.location %>
 </p>
 
-<%= link_to 'Edit', edit_factory_path(@factory), :class => "button btn btn-warning"  %>
-<%= link_to 'Back', factories_path, :class => "button btn btn-success"  %>
-<%= link_to 'Home', root_path, :class => "button btn btn-info"  %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_factory_path(@factory), :class => "button btn btn-warning"  %>
+  <% end %>
+<%= link_to 'Back', factories_path, :class => "button btn btn-warning"  %>
+<%= link_to 'Home', root_path, :class => "button btn btn-warning"  %>

@@ -16,9 +16,11 @@
       <tr>
         <td><%= factory.name %></td>
         <td><%= factory.location %></td>
-        <td><%= link_to 'Show', factory, :class => "button btn btn-info"  %></td>
-        <td><%= link_to 'Edit', edit_factory_path(factory), :class => "button btn btn-warning"  %></td>
-        <td><%= link_to 'Destroy', factory, :class => "button btn btn-danger" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', factory, :class => "button btn btn-warning"  %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_factory_path(factory), :class => "button btn btn-warning"  %></td>
+          <td><%= link_to 'Destroy', factory, :class => "button btn btn-warning" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,5 +28,7 @@
 
 <br>
 
-<%= link_to 'New Factory', new_factory_path, :class => "button btn btn-info"  %>
-<%= link_to 'Home', root_path, :class => "button btn btn-info"  %>
+<% if user_signed_in? %>
+  <%= link_to 'New Factory', new_factory_path, :class => "button btn btn-warning"  %>
+<% end %>
+<%= link_to 'Home', root_path, :class => "button btn btn-warning"  %>
